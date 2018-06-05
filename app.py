@@ -702,5 +702,9 @@ def logout():
     del session['username']
     return redirect('/login')
 
+@app.route('/google71f185714e0c0e1a.html')
+def search_console_gg():
+    return render_template('google71f185714e0c0e1a.html')
+
 if __name__ == '__main__':
   app.run(debug=True)
