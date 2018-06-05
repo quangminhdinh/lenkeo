@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Đặt kèo</title>
+    <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/casino-glyph/500/casino-Glyph-13-512.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+
+      // Hàm để disable và enable, không cho một người một lúc hai cửa
+      // Ngoài cái javascript này ra thì em chỉ thay đổi ở các dòng: 79, 103, 119, 150 và 166 thôi
+      // Nhớ là viết KHÔNG SAI MỘT CHỮ!!!
+
+      function _focus123(){
+        var check = document.getElementById('check_but123');
+        check.value = "1";
+      }
+
+      function _focus321(){
+        var check = document.getElementById('check_but321');
+        check.value = "1";
+      }
+
+      function _focus3210(){
+        var check = document.getElementById('check_but3210');
+        check.value = "1";
+      }
+
+      function _search123(){
+        var check = document.getElementById('check_but123');
+        if (check.value == "1") {
+          var but = document.getElementById('dropdownMenuButton123');
+          but.click();
+          check.value = "0";
+        }
+        // Tìm kiếm phần tử:
+        var input, filter, ul, li, a, i, p;
+        input = document.getElementById('search_input123');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("search_hint123");
+        li = ul.getElementsByTagName('li');
+
+        // Xóa toàn bộ gợi ý không phù hợp
+        var limit = document.getElementById('limit123');
+        var nonresult = document.getElementById('result123');
+        for (i = 0; i < li.length; i++) {
+          p = li[i].getElementsByTagName("p")[0];
+          if (p.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            nonresult.value = "1";
+            var limit1 = Number(limit.value);
+            if (limit1 < 10) {
+              li[i].style.display = "";
+              limit1++;
+              limit.value = limit1.toString();
+            }
+            else {
+              li[i].style.display = "none";
+            }
+          }
+          else {
+            li[i].style.display = "none";
+          }
+        }
+        limit.value = "0";
+        var no_result = document.getElementById('no_result123');
+        if (nonresult.value == "1") {
+            no_result.style.display = "none";
+        }
+        else {
+            no_result.style.display = "";
+        }
+        nonresult.value = "0";
+      }
+
+      function _search3210(){
+        var check = document.getElementById('check_but3210');
+        if (check.value == "1") {
+          var but = document.getElementById('dropdownMenuButton3210');
+          but.click();
+          check.value = "0";
+        }
+        // Tìm kiếm phần tử:
+        var input, filter, ul, li, a, i, p;
+        input = document.getElementById('search_input3210');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("search_hint3210");
+        li = ul.getElementsByTagName('li');
+
+        // Xóa toàn bộ gợi ý không phù hợp
+        var limit = document.getElementById('limit3210');
+        var nonresult = document.getElementById('result3210');
+        for (i = 0; i < li.length; i++) {
+          p = li[i].getElementsByTagName("p")[0];
+          if (p.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            nonresult.value = "1";
+            var limit1 = Number(limit.value);
+            if (limit1 < 10) {
+              li[i].style.display = "";
+              limit1++;
+              limit.value = limit1.toString();
+            }
+            else {
+              li[i].style.display = "none";
+            }
+          }
+          else {
+            li[i].style.display = "none";
+          }
+        }
+        limit.value = "0";
+        var no_result = document.getElementById('no_result3210');
+        if (nonresult.value == "1") {
+            no_result.style.display = "none";
+        }
+        else {
+            no_result.style.display = "";
+        }
+        nonresult.value = "0";
+      }
+
+      function _search321(){
+        var check = document.getElementById('check_but321');
+        if (check.value == "1") {
+          var but = document.getElementById('dropdownMenuButton321');
+          but.click();
+          check.value = "0";
+        }
+        // Tìm kiếm phần tử:
+        var input, filter, ul, li, a, i, p;
+        input = document.getElementById('search_input321');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("search_hint321");
+        li = ul.getElementsByTagName('li');
+
+        // Xóa toàn bộ gợi ý không phù hợp
+        var limit = document.getElementById('limit321');
+        var nonresult = document.getElementById('result321');
+        for (i = 0; i < li.length; i++) {
+          p = li[i].getElementsByTagName("p")[0];
+          if (p.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            nonresult.value = "1";
+            var limit1 = Number(limit.value);
+            if (limit1 < 10) {
+              li[i].style.display = "";
+              limit1++;
+              limit.value = limit1.toString();
+            }
+            else {
+              li[i].style.display = "none";
+            }
+          }
+          else {
+            li[i].style.display = "none";
+          }
+        }
+        limit.value = "0";
+        var no_result = document.getElementById('no_result321');
+        if (nonresult.value == "1") {
+            no_result.style.display = "none";
+        }
+        else {
+            no_result.style.display = "";
+        }
+        nonresult.value = "0";
+      }
+
+      function _check_friend_state(val, party) {
+        if (party == "right") {
+          document.getElementById('search_input123').value = "";
+          if (document.getElementById(val).disabled == false || document.getElementById(val + "2vưvbrytvbb87w87465vqb4v547").disabled == false) {
+            document.getElementById(val).disabled = true;
+            document.getElementById(val + "2vưvbrytvbb87w87465vqb4v547").disabled = true;
+            var hidden_right = document.getElementById('hid_rightlist');
+            document.getElementById('h4_rightlist').style.display = "";
+            document.getElementById(val + "jfjfjfjhfjhfjfyjti6686567t6ttu6tu6t7iti6ti6ti76ti6ti6ti76t").style.display = "";
+            if (hidden_right.value == "") {
+              hidden_right.value = "1";
+            }
+            else {
+              var hidden_right1 = Number(hidden_right.value);
+              hidden_right1 += 1;
+              hidden_right.value = hidden_right1.toString();
+            }
+          }
+          else {
+            document.getElementById(val).disabled = false;
+            document.getElementById(val + "2vưvbrytvbb87w87465vqb4v547").disabled = false;
+            document.getElementById(val + "jfjfjfjhfjhfjfyjti6686567t6ttu6tu6t7iti6ti6ti76ti6ti6ti76t").style.display = "none";
+            var hidden_right = document.getElementById('hid_rightlist');
+            if (hidden_right.value == "0") {
+              document.getElementById('h4_rightlist').style.display = "none";
+            }
+            else {
+              var hidden_right1 = Number(hidden_right.value);
+              hidden_right1 -= 1;
+              hidden_right.value = hidden_right1.toString();
+              if (hidden_right.value == "0") {
+                document.getElementById('h4_rightlist').style.display = "none";
+              }
+            }
+          }
+        }
+        else if (party == "left") {
+          document.getElementById('search_input321').value = "";
+          if (document.getElementById(val + "1gdfg34t3g3gege6en6n").disabled == false || document.getElementById(val + "2vưvbrytvbb87w87465vqb4v547").disabled == false) {
+            document.getElementById(val + "1gdfg34t3g3gege6en6n").disabled = true;
+            document.getElementById(val + "2vưvbrytvbb87w87465vqb4v547").disabled = true;
+            var hidden_left = document.getElementById('hid_leftlist');
+            document.getElementById('h4_leftlist').style.display = "";
+            document.getElementById(val + "yktryryruruytryrut7658g8g9ygv9yv9tvytvyvyv9vyv9ytv9ytvyv9tvyvuvu9yv9uyvuvijhvijhvjihgihbjbibibijhkjbjkhbkjbjkbjbkjgiyiguiguguy").style.display = "";
+            if (hidden_left.value == "") {
+              hidden_left.value = "1";
+            }
+            else {
+              var hidden_left1 = Number(hidden_left.value);
+              hidden_left1 += 1;
+              hidden_left.value = hidden_left1.toString();
+            }
+          }
+          else {
+            document.getElementById(val + "1gdfg34t3g3gege6en6n").disabled = false;
+            document.getElementById(val + "2vưvbrytvbb87w87465vqb4v547").disabled = false;
+            document.getElementById(val + "yktryryruruytryrut7658g8g9ygv9yv9tvytvyvyv9vyv9ytv9ytvyv9tvyvuvu9yv9uyvuvijhvijhvjihgihbjbibibijhkjbjkhbkjbjkbjbkjgiyiguiguguy").style.display = "none";
+            var hidden_left = document.getElementById('hid_leftlist');
+            if (hidden_left.value == "0") {
+              document.getElementById('h4_leftlist').style.display = "none";
+            }
+            else {
+              var hidden_left1 = Number(hidden_left.value);
+              hidden_left1 -= 1;
+              hidden_left.value = hidden_left1.toString();
+              if (hidden_left.value == "0") {
+                document.getElementById('h4_leftlist').style.display = "none";
+              }
+            }
+          }
+        }
+        else {
+          document.getElementById('search_input3210').value = "";
+          if (document.getElementById(val).disabled == false || document.getElementById(val + "1gdfg34t3g3gege6en6n").disabled == false) {
+            document.getElementById(val + "1gdfg34t3g3gege6en6n").disabled = true;
+            document.getElementById(val).disabled = true;
+            var hidden_spec = document.getElementById('hid_speclist');
+            document.getElementById('h4_speclist').style.display = "";
+            document.getElementById(val + "iaygfisdagfsjkbkjhbfeyufbwyf842rt829gr9vf2fb2uhfuefhiq8rh9q84r9qewhr89q34h8r9hqewuhriqewhr9q4hr9qehriqehriwqhr").style.display = "";
+            if (hidden_spec.value == "") {
+              hidden_spec.value = "1";
+            }
+            else {
+              var hidden_spec1 = Number(hidden_spec.value);
+              hidden_spec1 += 1;
+              hidden_spec.value = hidden_spec1.toString();
+            }
+          }
+          else {
+            document.getElementById(val + "1gdfg34t3g3gege6en6n").disabled = false;
+            document.getElementById(val).disabled = false;
+            document.getElementById(val + "iaygfisdagfsjkbkjhbfeyufbwyf842rt829gr9vf2fb2uhfuefhiq8rh9q84r9qewhr89q34h8r9hqewuhriqewhr9q4hr9qehriqehriwqhr").style.display = "none";
+            var hidden_spec = document.getElementById('hid_speclist');
+            if (hidden_spec.value == "0") {
+              document.getElementById('h4_speclist').style.display = "none";
+            }
+            else {
+              var hidden_spec1 = Number(hidden_spec.value);
+              hidden_spec1 -= 1;
+              hidden_spec.value = hidden_spec1.toString();
+              if (hidden_spec.value == "0") {
+                document.getElementById('h4_speclist').style.display = "none";
+              }
+            }
+          }
+        }
+      }
+
+      function _checkTime(){
+        var right = document.getElementById('search_hint123');
+        var left = document.getElementById('search_hint321');
+        var input_right = right.getElementsByTagName('input');
+        var input_left = left.getElementsByTagName('input');
+        var hid_right = document.getElementById('hid_right');
+        var hid_left = document.getElementById('hid_left');
+        for (var i = 0; i < input_left.length; i++) {
+          if (input_right[i].disabled == true) {
+            var hidright = Number(hid_right.value);
+            hidright += 1;
+            hid_right.value = hidright.toString();
+          }
+          // else if (input_right[i].disabled == false) {
+          //
+          // }
+          if (input_left[i].disabled == true) {
+            var hidleft = Number(hid_left.value);
+            hidleft += 1;
+            hid_left.value = hidleft.toString();
+          }
+          else if (input_left[i].disabled == false) {
+            var left_id = input_left[i].id + "1gdfg34t3g3gege6en6n";
+            if (document.getElementById(left_id).disabled == false) {
+              var hidright = Number(hid_right.value);
+              hidright += 1;
+              hid_right.value = hidright.toString();
+              var hidleft = Number(hid_left.value);
+              hidleft += 1;
+              hid_left.value = hidleft.toString();
+            }
+          }
+        }
+        hid_right = document.getElementById('hid_right');
+        var hidright = Number(hid_right.value);
+        hid_left = document.getElementById('hid_left');
+        var hidleft = Number(hid_left.value);
+        if (hidright >= input_left.length) {
+          alert("Cửa trên không được để trống!");
+          hid_right.value = "0";
+          hid_left.value = "0";
+          return false;
+        }
+        if (hidleft >= input_left.length) {
+          alert("Cửa dưới không được để trống!");
+          hid_right.value = "0";
+          hid_left.value = "0";
+          return false;
+        }
+        if (hidright < input_left.length || hidleft < input_left.length) {
+          var datetime = document.getElementById('dates').value;
+          var date = new Date(datetime).getTime();
+          var now = new Date().getTime();
+          var distance = date - now;
+          if (distance <= 0) {
+            alert("Không được phép chọn thời gian trước thời điểm hiện tại!");
+            return false;
+          }
+          else {
+            return true;
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+
+    <!-- navbar -->
+
+    {% include 'include-template.html' %}
+
+
+
+    <div class="container  col-xl-6 col-lg-11 p-0 mt-3 ">
+
+        <div class="row">
+          <div class="col-md-3 col-5 m-0 pr-0 ">
+            <div class="container rounded-top border border-success border-bottom-0 p-0 bg-light ">
+              <a class="nav-link active border-success border-bottom-0 text-success font-weight-bold pl-4" href="/contract.type.1/traditional">
+                <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                <span style="display:inline-block; width: YOURWIDTH;"></span>
+                Classic
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-5 m-0 pl-0 pr-0 ">
+            <div class="container rounded-top border border-success border-top-0 border-left-0 border-right-0 p-0">
+              <a data-toggle="tooltip" data-placement="top" title="Đang trong quá trình phát triển"
+              class="nav-link active border-success border-bottom-0 text-light font-weight-bold pl-4" href="#">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span style="display:inline-block; width: YOURWIDTH;"></span>
+                Nhiều bên
+              </a>
+            </div>
+          </div>
+          <div class="col m-0 pl-0 border border-success border-top-0 border-left-0 border-right-0 p-0 mr-3">
+          </div>
+        </div>
+    </div>
+    <div class="container col-xl-6 col-lg-11  p-0">
+      <div class="container bg-light rounded-bottom border border-success border-top-0 pl-4 pr-4">
+      <!-- Tabs để chọn loại kèo -->
+
+
+      <!-- form để người dùng lên kèo -->
+      <!-- nhớ phải có frm là tên của from -->
+
+
+      <form name="frm" onsubmit="return(_checkTime())" class="" action="" method="post" >
+
+
+    {% include 'include-template-contract.html' %}
+
+
+
+        <!-- Các cửa -->
+        <div class="form-group mb-1">
+          <label class="ml-1 mb-0" for=""><strong>Các bên tham gia</strong></label>
+          <div class="row">
+            <!-- cửa trên -->
+            <div class="col-md-6 mt-1" id="right_div">
+              <div id="accordion" role="tablist">
+                  <div class="card-tittle">
+                    <div data-toggle="collapse" class="p-1 text-center bg-dark text-light btn-block rounded-top" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    Cửa trên
+                    </div>
+                  </div>
+                  <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordion">
+                    <div class="card-body pb-3 pt-1 border border-success bg-light border-top-0 rounded-bottom">
+                      <div class="dropdown">
+                        <input class="form-control mr-sm-2" id="search_input123" onfocus="_focus123()" onkeyup="_search123()" type="search" placeholder="Tìm và thêm tài khoản vào cửa" aria-label="Search">
+                        <div class="m-0 p-0" type="button" id="dropdownMenuButton123" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton123">
+                          <ul id="search_hint123" class="m-0 p-0">
+                            <div multiple name="party_right" class="m-0 p-0 ml-2 mr-2" >
+                            {% for hint in hints %}
+                                <li class="dropdown-item p-0 m-0 mt-1 ml-3 mr-3">
+                                  <label class="custom-control custom-checkbox m-0 p-0">
+                                  <input id="{{hint['username']}}1gdfg34t3g3gege6en6n" type="checkbox"
+                                  onclick="_check_friend_state(this.value, 'right')" class="custom-control-input"
+                                  name="party_right" value="{{hint['username']}}">
+                                  <span class="custom-control-indicator custom-control-success"></span>
+                                  <span class="ml-4">
+                                    {% if hint.image is none %}
+                                      <img class=" rounded-circle" src="https://www.frankfurt-airport.com/etc/clientlibs/fraport-airport/fraport.base.app/resources/img/fra_avatar.jpg" height="20px" width="20px" alt="">
+                                    {% else %}
+                                      <img class=" rounded-circle" src="data:image/*;base64,{{hint.image}}" height="20px" width="20px" alt="">
+                                    {% endif %}
+                                  </span>
+                                  <span style="display:inline-block; width: YOURWIDTH;"></span>
+                                  <span class="custom-control-description">
+                                    <p class="p-0 m-0">{{hint['name']}}</p></span>
+                                  </label>
+                                </li>
+                              {% endfor %}
+                            </div>
+                          </ul>
+                          <p class="dropdown-item pl-3 pr-3" id="no_result123">Không tìm thấy</p>
+                        </div>
+                      </div>
+                      <input type="hidden" id="check_but123" name="" value="1">
+                      <input type="hidden" id="limit123" name="" value="0">
+                      <input type="hidden" id="result123" name="" value="0">
+                      <h6 class="text-center mb-0" id="h4_rightlist" style="display: none;">Danh sách người người tham gia: </h6>
+                      <ul class="p-0 m-0" id="ul_right">
+                        {% for hint in hints %}
+                        <div class="">
+                    <li id="{{hint['username']}}jfjfjfjhfjhfjfyjti6686567t6ttu6tu6t7iti6ti6ti76ti6ti6ti76t"
+                    style="display: none;" class="list-group-item bg-light border-light p-0 pl-4 pr-3">
+                        {% if hint.image is none %}
+                          <img class=" rounded-circle" src="https://www.frankfurt-airport.com/etc/clientlibs/fraport-airport/fraport.base.app/resources/img/fra_avatar.jpg" height="20px" width="20px" alt="">
+                        {% else %}
+                          <img class=" rounded-circle" src="data:image/*;base64,{{hint.image}}" height="20px" width="20px" alt="">
+                        {% endif %}
+                        {{hint['name']}}
+                    </li>
+                        </div>
+                        {% endfor %}
+                      </ul>
+                      <input type="hidden" id="hid_rightlist" name="" value="">
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <input type="hidden" id="hid_right" value="0">
+            <!-- cửa trên end_ -->
+            <!-- cửa dưới -->
+            <div class="col-md-6 mt-1" id="left_div">
+              <div id="accordion" role="tablist">
+                  <div class="card-tittle">
+                    <div data-toggle="collapse" class="p-1 text-center bg-dark text-light btn-block rounded-top" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                      Cửa dưới
+                    </div>
+                  </div>
+                  <div id="collapse2" class="collapse show" role="tabpanel" aria-labelledby="heading2" data-parent="#accordion">
+                    <div class="card-body pb-3 pt-1 border border-success bg-light border-top-0 rounded-bottom">
+                      <div class="dropdown">
+                        <input class="form-control mr-sm-2" id="search_input321" onfocus="_focus321()" onkeyup="_search321()" type="search" placeholder="Tìm và thêm tài khoản vào cửa" aria-label="Search">
+                        <div class="m-0 p-0" type="button" id="dropdownMenuButton321" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton321">
+                          <ul id="search_hint321" class="p-0 m-0">
+                            <div multiple name="party_left" class="m-0 p-0 ml-2 mr-2">
+                          {% for hint in hints %}
+                            <li class="dropdown-item p-0 m-0 mt-1 ml-3 mr-3">
+                              <label  class="custom-control custom-checkbox mb-0">
+                                  <input id="{{hint['username']}}" type="checkbox" onclick="_check_friend_state(this.value, 'left')" class="custom-control-input" name="party_left" value="{{hint['username']}}">
+                                  <span class="custom-control-indicator custom-control-success"></span>
+                                  <span class="ml-4">
+                                    {% if hint.image is none %}
+                                      <img class=" rounded-circle" src="https://www.frankfurt-airport.com/etc/clientlibs/fraport-airport/fraport.base.app/resources/img/fra_avatar.jpg" height="20px" width="20px" alt="">
+                                    {% else %}
+                                      <img class=" rounded-circle" src="data:image/*;base64,{{hint.image}}" height="20px" width="20px" alt="">
+                                    {% endif %}
+                                  </span>
+                                  <span style="display:inline-block; width: YOURWIDTH;"></span>
+                                  <span class="custom-control-description">
+                                    <p class="p-0 m-0">{{hint['name']}}</p></span>
+                              </label>
+                            </li>
+                          {% endfor %}
+                          </div>
+                          </ul>
+                          <p class="dropdown-item pl-3 pr-3" id="no_result321">Không tìm thấy</p>
+                        </div>
+                      </div>
+                      <input type="hidden" id="check_but321" name="" value="1">
+                      <input type="hidden" id="limit321" name="" value="0">
+                      <input type="hidden" id="result321" name="" value="0">
+                      <h6 class="text-center mb-0" id="h4_leftlist" style="display: none;">Danh sách người người tham gia: </h6>
+                      <ul class="p-0 m-0" id="ul_left">
+                        {% for hint in hints %}
+                        <div class="">
+                        <li id="{{hint['username']}}yktryryruruytryrut7658g8g9ygv9yv9tvytvyvyv9vyv9ytv9ytvyv9tvyvuvu9yv9uyvuvijhvijhvjihgihbjbibibijhkjbjkhbkjbjkbjbkjgiyiguiguguy"
+                        style="display: none;" class="list-group-item bg-light border-light p-0 pl-4 pr-3">
+                        {% if hint.image is none %}
+                          <img class=" rounded-circle" src="https://www.frankfurt-airport.com/etc/clientlibs/fraport-airport/fraport.base.app/resources/img/fra_avatar.jpg" height="20px" width="20px" alt="">
+                        {% else %}
+                          <img class=" rounded-circle" src="data:image/*;base64,{{hint.image}}" height="20px" width="20px" alt="">
+                        {% endif %}
+                      {{hint['name']}}
+                        </li>
+                      </div>
+                      {% endfor %}
+                      </ul>
+                      <input type="hidden" id="hid_leftlist" name="" value="">
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <input type="hidden" id="hid_left" value="0">
+            <!-- cửa dưới end_ -->
+          </div>
+        </div>
+
+        <!-- Khán giả -->
+        <div class="form-group">
+          <label class="ml-1 mb-0" for=""><strong>Khán giả</strong></label>
+          <div class="mt-1" id="accordion" role="tablist">
+              <div class="card-tittle">
+                <div data-toggle="collapse" class="p-1 text-center bg-dark text-light btn-block rounded-top" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                Thông báo tới một vài người bạn của bạn về kèo này
+                </div>
+              </div>
+              <div id="collapse3" class="collapse show" role="tabpane3" aria-labelledby="heading3" data-parent="#accordion">
+                <div class="card-body pb-3 pt-1 border border-success bg-light border-top-0 rounded-bottom">
+                  <div class="dropdown">
+                    <input class="form-control mr-sm-2" id="search_input3210" onfocus="_focus3210()" onkeyup="_search3210()" type="search" placeholder="Tìm và thêm tài khoản vào cửa" aria-label="Search">
+                    <div class="m-0 p-0" type="button" id="dropdownMenuButton3210" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3210">
+                      <ul id="search_hint3210" class="p-0">
+                        <div multiple name="spectator" class="m-0 p-0 ml-2 mr-2">
+                      {% for hint in hints %}
+                            <li class="dropdown-item p-0 m-0 mt-1 ml-3 mr-3">
+                              <label class="custom-control custom-checkbox mb-0">
+                              <input id="{{hint['username']}}2vưvbrytvbb87w87465vqb4v547" onclick="_check_friend_state(this.value,'spectator')" type="checkbox" class="custom-control-input" name="spectator" value="{{hint['username']}}">
+                              <span class="custom-control-indicator custom-control-success"></span>
+                              <span class="ml-4">
+                                {% if hint.image is none %}
+                                  <img class=" rounded-circle" src="https://www.frankfurt-airport.com/etc/clientlibs/fraport-airport/fraport.base.app/resources/img/fra_avatar.jpg" height="20px" width="20px" alt="">
+                                {% else %}
+                                  <img class=" rounded-circle" src="data:image/*;base64,{{hint.image}}" height="20px" width="20px" alt="">
+                                {% endif %}
+                              </span>
+                              <span style="display:inline-block; width: YOURWIDTH;"></span>
+                              <span class="custom-control-description">
+                                <p class="p-0 m-0">{{hint['name']}}</p></span>
+                                </label>
+                            </li>
+
+                      {% endfor %}
+
+                    </div>
+                      </ul>
+                      <p class="dropdown-item pl-3 pr-3" id="no_result3210">Không tìm thấy</p>
+                    </div>
+                  </div>
+                  <input type="hidden" id="check_but3210" name="" value="1">
+                  <input type="hidden" id="limit3210" name="" value="0">
+                  <input type="hidden" id="result3210" name="" value="0">
+                  <h6 class="text-center mb-0" id="h4_speclist" style="display: none;">Danh sách khán giả: </h6>
+                  <ul class="p-0 m-0" id="ul_spec">
+                    {% for hint in hints %}
+                    <div class="text-center">
+                    <li id="{{hint['username']}}iaygfisdagfsjkbkjhbfeyufbwyf842rt829gr9vf2fb2uhfuefhiq8rh9q84r9qewhr89q34h8r9hqewuhriqewhr9q4hr9qehriqehriwqhr"
+                    style="display: none;" class="list-group-item bg-light border-light p-0 pl-4 pr-3">
+                    {% if hint.image is none %}
+                      <img class=" rounded-circle" src="https://www.frankfurt-airport.com/etc/clientlibs/fraport-airport/fraport.base.app/resources/img/fra_avatar.jpg" height="20px" width="20px" alt="">
+                    {% else %}
+                      <img class=" rounded-circle" src="data:image/*;base64,{{hint.image}}" height="20px" width="20px" alt="">
+                    {% endif %}
+                        {{hint['name']}}
+                    </li>
+                    </div>
+                    {% endfor %}
+                  </ul>
+                  <input type="hidden" id="hid_speclist" name="" value="">
+
+
+                </div>
+              </div>
+          </div>
+        </div>
+
+
+
+
+        <input type="hidden" name="_id" value="{{id}}">
+        <div class="text-right mb-2">
+          <input class="text-center btn btn-success btn-lg p-2 pl-5 pr-5 font-weight-bold mb-2" type="submit" name="" value="Tạo kèo">
+        </div>
+
+      </form>
+    </div>
+    <script type="text/javascript">
+      document.getElementById('{{account.username}}1gdfg34t3g3gege6en6n').click();
+    </script>
+  </body>
+</html>
